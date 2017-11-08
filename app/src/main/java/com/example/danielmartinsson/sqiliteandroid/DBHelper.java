@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by danielmartinsson on 2017-11-08.
  */
@@ -39,6 +42,13 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("name" ,name);
         contentValues.put("points", points);
         long id = db.insert("Highscores", null, contentValues);
+        db.close();
+    }
+
+    public List<HighScore> gettAllHighscores() {
+        List<HighScore> highScoreList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
         db.close();
     }
 
