@@ -15,10 +15,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, "MyDataBase", null, DB_VERSION);
     }
-    
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        String sql = "CREATE TABLE Highscores ( id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name TEXT NOT NULL," +
+                "points INTEGER);";
+
+        db.execSQL(sql);
     }
 
     @Override
